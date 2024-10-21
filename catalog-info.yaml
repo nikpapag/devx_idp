@@ -11,8 +11,7 @@ metadata:
 spec:
   owner: nikolaos.papageorgiou@harness.io
   type: service
-parameters:
-
+  parameters:
     - title: Input Data
       properties:
         # This field is hidden but needed to authenticate the request to trigger the pipeline
