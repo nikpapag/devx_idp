@@ -48,13 +48,6 @@ parameters:
           type: string
           enum: ['None', 'MySQL', 'Postgres', 'MongoDB']
           default: None
-        owner:
-          title: Choose an Owner for the Service
-          type: string
-          ui:field: OwnerPicker
-          ui:options:
-            allowedKinds:
-              - Group
   steps:
     # Call Harness Pipelines to create the service infra and other things
     - id: trigger
