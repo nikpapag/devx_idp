@@ -1,0 +1,68 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: devxproject
+  title: Self Service Infrastructure & Harness Automation
+  description: A template for product as a service (Infrastructure, Code, CI/CD)
+  tags:
+    - automation
+    - self-service
+    - harness
+spec:
+  owner: nikolaos.papageorgiou@harness.io
+  type: service
+parameters:
+
+    - title: Input Data
+      properties:
+        # This field is hidden but needed to authenticate the request to trigger the pipeline
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+        username:
+          title: username
+          type: string
+          description: Naming convention for project DevX_<<placeholder>>
+          maxLength: 6
+          pattern: '^([a-z]*)*$'
+          ui:autofocus: true
+          ui:help: 'Hint: this will be used also for subdomain'
+      errorMessage:
+        properties:
+          username: '1-6 lowercase'
+    - title: Service Infrastructure Details
+      required:
+        - provider
+        - db
+        - owner  
+      properties:
+        provider:
+          title: Choose a cloud provider for Deployment
+          type: string
+          enum: ['GCP', 'AWS', "AZURE"]
+          default: AWS
+        db:
+          title: Choose a Database Type for the Service
+          type: string
+          enum: ['None', 'MySQL', 'Postgres', 'MongoDB']
+          default: None
+        owner:
+          title: Choose an Owner for the Service
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+
+  steps:
+    # Call Harness Pipelines to create the service infra and other things
+    - id: trigger
+      name: Creating Your Infra for the Service
+      action: trigger:harness-custom-pipeline
+      input:
+        url: 'https://app.harness.io/ng/account/EeRjnXTnS4GrLG5VNNJZUw/module/cd/orgs/demo/projects/Reference_Architecture/pipelines/DevX_Project_Provision/pipeline-studio?storeType=INLINE'
+        inputset:
+          username: ${{ parameters.username }}
+        apikey: ${{ parameters.token }}
