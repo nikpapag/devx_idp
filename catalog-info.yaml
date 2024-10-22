@@ -59,7 +59,7 @@ spec:
       name: Create all self-service components using harness templates
       action: trigger:harness-custom-pipeline
       input:
-        url: 'https://app.harness.io/ng/account/EeRjnXTnS4GrLG5VNNJZUw/module/cd/orgs/demo/projects/Reference_Architecture/pipelines/DevX_Project_Provision/pipeline-studio?storeType=INLINE'
+        url: 'https://app.harness.io/ng/account/EeRjnXTnS4GrLG5VNNJZUw/module/cd/orgs/demo/projects/Reference_Architecture/pipelines/DevX_Project_Provision/pipeline-studio?repoName=org.devx_provision&branch=main'
         inputset:
           username: ${{ parameters.username }}
         apikey: ${{ parameters.token }}
