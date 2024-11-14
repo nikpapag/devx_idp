@@ -24,7 +24,7 @@ spec:
           title: username
           type: string
           description: Naming convention for project DevX_<<placeholder>>
-          maxLength: 6
+          maxLength: 9
           pattern: '^([a-z]*)*$'
           ui:autofocus: true
       errorMessage:
