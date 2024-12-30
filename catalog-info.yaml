@@ -23,13 +23,13 @@ spec:
         username:
           title: username
           type: string
-          description: Naming convention for project DevX_<<placeholder>>
+          description: Enter a 6 character or less, lowercase username. It will be prepended and used in the proejct name like so DevX_<<username>>
           maxLength: 9
           pattern: '^([a-z]*)*$'
           ui:autofocus: true
       errorMessage:
         properties:
-          username: '1-6 lowercase'
+          username: '1-6 characters, lowercase characters only'
     - title: Service Infrastructure Details
       required:
         - provider
