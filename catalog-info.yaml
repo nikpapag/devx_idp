@@ -21,7 +21,7 @@ spec:
           ui:widget: password
           ui:field: HarnessAuthToken
         username:
-          title: username
+          title: Project Name
           type: string 
           description: Enter a 6 character or less, lowercase username. It will be prepended and used in the proejct name like so DevX_<<username>>
           maxLength: 11
